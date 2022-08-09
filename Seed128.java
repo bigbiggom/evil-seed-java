@@ -36,8 +36,8 @@ public class Seed128 {
 
     private void validation(final String key) {
         Optional.ofNullable(key)
-            .filter(Predicate.not(String::isBlank))
-            .filter(Predicate.not(s -> s.length() != 16))
+            .filter(s -> !s.isBlank())
+            .filter(s -> s.length() == 16)
             .orElseThrow(IllegalArgumentException::new);
     }
 }
